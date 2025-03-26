@@ -4,3 +4,5 @@ jq '.[] | select(.host? and (.host | test("(^|\\.)vercel\\.app$")) and (.respons
 ```
 - change the domain to desired
 - status code of desired
+# usage
+![image](https://github.com/user-attachments/assets/79e74fb9-ffa8-4c23-9bd2-dccd23c69654)
