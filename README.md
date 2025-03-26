@@ -12,4 +12,8 @@ jq -r '.[] | select(.host? and (.host | test("(^|\\.)vercel\\.app$")) and (.resp
 ```sh
 jq -r '.[] | select(.host? and (.host | test("(^|\\.)vercel\\.app$")) and (.response? and (.response.status_code == 200 or .response.status_code == 403))) | .host + .path' 'filename.json'
 ```
-- you can also chain with httpx or probling
+- you can also chain with httpx for probling
+- you can also chain up with nuclei
+```
+jq -r '.[] | select(.host? and (.host | test("(^|\\.)vercel\\.app$")) and (.response? and (.response.status_code == 200 or .response.status_code == 403))) | .host + .path' 'filename.json' | nuclei --silent -t ~/templete | tee -a nuclei.log
+```
