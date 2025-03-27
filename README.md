@@ -17,3 +17,7 @@ jq -r '.[] | select(.host? and (.host | test("(^|\\.)vercel\\.app$")) and (.resp
 ```
 jq -r '.[] | select(.host? and (.host | test("(^|\\.)vercel\\.app$")) and (.response? and (.response.status_code == 200 or .response.status_code == 403))) | .host + .path' 'filename.json' | nuclei --silent -t ~/templete | tee -a nuclei.log
 ```
+# Feeding proxy
+```
+while IFS= read -r url; do curl -x 127.0.0.1:8080 "$url"; done < urls.txt
+```
